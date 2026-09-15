@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-09-15T19:25:47.702589+00:00",
+  "sourceFilesVerified": 117,
+  "creationBytecodeAndMetadataVerified": [
+    "hook",
+    "factory",
+    "router",
+    "vault",
+    "registry",
+    "locker",
+    "hookCreate2Deployer"
+  ],
+  "hookUpgradeEntrypointsAbsent": true,
+  "chainId": 4663,
+  "blockNumber": 63900643,
+  "blockHash": "0x04076c6000b51acbf6efdb9e1e135cf788fd050d869399d70aa3ac426daa5ff9",
+  "runtimeChecks": {
+    "hook": {
+      "address": "0x5aE59a607FBE48e62270272Ee0eC266a544368cc",
+      "exactMatch": true,
+      "runtimeBytes": 9449,
+      "codeHash": "0xd6029aaab23bb7395a88ab6742869a9c7b174d824dcf3a952e40cf59ddc96ff1"
+    },
+    "factory": {
+      "address": "0xf10677910B82bBC6861ED78d7706174924DD767d",
+      "exactMatch": true,
+      "runtimeBytes": 18926,
+      "codeHash": "0x10b27ae77ba2d520548cb408bd4b6caceeae0cab8dae14d5c8d2cf775763fc64"
+    },
+    "router": {
+      "address": "0x09cCA9Cc4A6e33770224EaCBBB4f3c9E8F212EB5",
+      "exactMatch": true,
+      "runtimeBytes": 4382,
+      "codeHash": "0xf4129f6397db5e146ad453295b9e871ffe341d342fbccfbf99ad4e13b71b8b16"
+    },
+    "vault": {
+      "address": "0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E",
+      "exactMatch": true,
+      "runtimeBytes": 4602,
+      "codeHash": "0xe231e488e14838dadf9944e4074cb97bf17c784204e405890b1ec156ee715b7c"
+    },
+    "registry": {
+      "address": "0x5F02169f808d602992664C8Ddc2FE44c751646B2",
+      "exactMatch": true,
+      "runtimeBytes": 523,
+      "codeHash": "0xa812331d45df3303705a5ca435a72f63326378dba85ffe64bcd3e8c9902eba67"
+    },
+    "locker": {
+      "address": "0x1d9018570F5203C76DC560eC7774995348934A6e",
+      "exactMatch": true,
+      "runtimeBytes": 1792,
+      "codeHash": "0xee3f5b6cf9790d7eeac2e5852e9813e06357e62bceb48e6da824bd3bca02e1c6"
+    },
+    "hookCreate2Deployer": {
+      "address": "0xA4EC369b9950233D9E53f9047BB4131D251fB776",
+      "exactMatch": true,
+      "runtimeBytes": 291,
+      "codeHash": "0xb639f5fc8ed05bc2eac3782bbb24b917e15ef9dc6cb816a4f14f2a0532ce979d"
+    }
+  },
+  "factoryPaused": true,
+  "totalLaunches": 0
+}

@@ -1,0 +1,10 @@
+@openzeppelin-v5.6.1/contracts/=lib/openzeppelin-contracts-v5.6.1/contracts/
+@openzeppelin/contracts/=lib/openzeppelin-contracts-v5.6.1/contracts/
+@uniswap/v4-core/=lib/v4-core/
+erc4626-tests/=lib/openzeppelin-contracts-v5.6.1/lib/erc4626-tests/
+forge-std/=lib/forge-std/src/
+halmos-cheatcodes/=lib/openzeppelin-contracts-v5.6.1/lib/halmos-cheatcodes/src/
+openzeppelin-contracts-v5.6.1/=lib/openzeppelin-contracts-v5.6.1/
+openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/
+solmate/=lib/solmate/
+v4-core/=lib/v4-core/src/

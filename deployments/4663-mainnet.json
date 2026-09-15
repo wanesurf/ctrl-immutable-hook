@@ -1,0 +1,445 @@
+{
+  "schemaVersion": 2,
+  "network": "Robinhood Chain",
+  "environment": "mainnet",
+  "chainId": 4663,
+  "deploymentKind": "direct-immutable",
+  "deploymentBlock": 63851929,
+  "hookDeploymentBlock": 63851934,
+  "wiringCompletedAtBlock": 63851940,
+  "deployedAt": "2026-09-15T18:00:55+00:00",
+  "sourceCommit": "6a88f5718cea426bc3dfb1a0815ca87579044e55",
+  "toolchain": {
+    "solc": "0.8.26+commit.8a97fa7a",
+    "evmVersion": "cancun",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIr": true,
+    "bytecodeHash": "ipfs",
+    "foundry": "1.6.0-nightly (5e88010a83d1b87b8f4d13058e42a2949d3e9dc0)"
+  },
+  "rpcUsed": "https://rpc.ctrl.finance",
+  "deployer": "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa",
+  "addresses": {
+    "hook": "0x5aE59a607FBE48e62270272Ee0eC266a544368cc",
+    "factory": "0xf10677910B82bBC6861ED78d7706174924DD767d",
+    "router": "0x09cCA9Cc4A6e33770224EaCBBB4f3c9E8F212EB5",
+    "vault": "0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E",
+    "registry": "0x5F02169f808d602992664C8Ddc2FE44c751646B2",
+    "locker": "0x1d9018570F5203C76DC560eC7774995348934A6e",
+    "hookCreate2Deployer": "0xA4EC369b9950233D9E53f9047BB4131D251fB776",
+    "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+    "positionManager": "0x58daec3116aae6D93017bAAea7749052E8a04fA7",
+    "permit2": "0x000000000022D473030F116dDEE9F6B43aC78BA3"
+  },
+  "codeHashes": {
+    "permit2": "0x5208783f52488f7d3493e5e38311ab707c1d75457fe472a19b0b4d57d66a7fca",
+    "hook": "0xd6029aaab23bb7395a88ab6742869a9c7b174d824dcf3a952e40cf59ddc96ff1",
+    "factory": "0x10b27ae77ba2d520548cb408bd4b6caceeae0cab8dae14d5c8d2cf775763fc64",
+    "router": "0xf4129f6397db5e146ad453295b9e871ffe341d342fbccfbf99ad4e13b71b8b16",
+    "registry": "0xa812331d45df3303705a5ca435a72f63326378dba85ffe64bcd3e8c9902eba67",
+    "vault": "0xe231e488e14838dadf9944e4074cb97bf17c784204e405890b1ec156ee715b7c",
+    "poolManager": "0xbd3881180b547f5fe817545743cfb4343e96b1bc6640dcd70c106b0066e95626",
+    "hookCreate2Deployer": "0xb639f5fc8ed05bc2eac3782bbb24b917e15ef9dc6cb816a4f14f2a0532ce979d",
+    "positionManager": "0xc873e135dc9aaec88489cfbad146b4cb49d6a32e0d80326377784b7ba17670b2",
+    "locker": "0xee3f5b6cf9790d7eeac2e5852e9813e06357e62bceb48e6da824bd3bca02e1c6"
+  },
+  "constructorArguments": {
+    "vault": {
+      "contract": "CtrlFeeVault",
+      "arguments": [
+        "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+        "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+        "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa"
+      ],
+      "encodedArguments": "0x00000000000000000000000099ffd2fdcaf29afddbbd49655f9331ff3ac1aa090000000000000000000000008366a39cc670b4001a1121b8f6a443a643e4095100000000000000000000000099ffd2fdcaf29afddbbd49655f9331ff3ac1aa09000000000000000000000000b84fc033ecf9c16a0c5273c6520600931f2d9cfa"
+    },
+    "registry": {
+      "contract": "CtrlReferralRegistry",
+      "arguments": [],
+      "encodedArguments": "0x"
+    },
+    "locker": {
+      "contract": "CtrlPositionLocker",
+      "arguments": [
+        "0x58daec3116aae6D93017bAAea7749052E8a04fA7",
+        "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa"
+      ],
+      "encodedArguments": "0x00000000000000000000000058daec3116aae6d93017baaea7749052e8a04fa7000000000000000000000000b84fc033ecf9c16a0c5273c6520600931f2d9cfa"
+    },
+    "hookCreate2Deployer": {
+      "contract": "CtrlHookCreate2Deployer",
+      "arguments": [],
+      "encodedArguments": "0x"
+    },
+    "router": {
+      "contract": "CtrlLaunchRouter",
+      "arguments": [
+        "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "0x5aE59a607FBE48e62270272Ee0eC266a544368cc"
+      ],
+      "encodedArguments": "0x0000000000000000000000008366a39cc670b4001a1121b8f6a443a643e409510000000000000000000000005ae59a607fbe48e62270272ee0ec266a544368cc"
+    },
+    "factory": {
+      "contract": "CtrlV4Factory",
+      "arguments": [
+        "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+        "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "0x58daec3116aae6D93017bAAea7749052E8a04fA7",
+        "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+        "0x1d9018570F5203C76DC560eC7774995348934A6e",
+        "0x5aE59a607FBE48e62270272Ee0eC266a544368cc",
+        "0x09cCA9Cc4A6e33770224EaCBBB4f3c9E8F212EB5",
+        "0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E"
+      ],
+      "encodedArguments": "0x00000000000000000000000099ffd2fdcaf29afddbbd49655f9331ff3ac1aa090000000000000000000000008366a39cc670b4001a1121b8f6a443a643e4095100000000000000000000000058daec3116aae6d93017baaea7749052e8a04fa7000000000000000000000000000000000022d473030f116ddee9f6b43ac78ba30000000000000000000000001d9018570f5203c76dc560ec7774995348934a6e0000000000000000000000005ae59a607fbe48e62270272ee0ec266a544368cc00000000000000000000000009cca9cc4a6e33770224eacbbb4f3c9e8f212eb50000000000000000000000007efce9ff1b6f8ab5f37747dfd3e46547b655f97e"
+    },
+    "hook": {
+      "contract": "CtrlLaunchHookV1",
+      "arguments": [
+        "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "0x58daec3116aae6D93017bAAea7749052E8a04fA7",
+        "0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E",
+        "0x5F02169f808d602992664C8Ddc2FE44c751646B2",
+        "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa"
+      ],
+      "encodedArguments": "0x0000000000000000000000008366a39cc670b4001a1121b8f6a443a643e4095100000000000000000000000058daec3116aae6d93017baaea7749052e8a04fa70000000000000000000000007efce9ff1b6f8ab5f37747dfd3e46547b655f97e0000000000000000000000005f02169f808d602992664c8ddc2fe44c751646b2000000000000000000000000b84fc033ecf9c16a0c5273c6520600931f2d9cfa"
+    }
+  },
+  "transactions": {
+    "deployments": [
+      {
+        "component": "vault",
+        "hash": "0xc155ce9fca2b512bac8bf825982ab833d63a86a7f36c6cfdb4589bb646089422",
+        "nonce": 251,
+        "blockNumber": 63851929,
+        "blockHash": "0x50cd8f141214aed7caef1ca95e55131a40a80027785c061d1514edd34f6856af",
+        "status": "success",
+        "gasUsed": 1125652,
+        "effectiveGasPriceWei": "67016000",
+        "deploymentType": "CREATE",
+        "address": "0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E"
+      },
+      {
+        "component": "registry",
+        "hash": "0x51e46d12655fcee089c79a01afc6fb143e685a30a59846bd32114df69e7105db",
+        "nonce": 252,
+        "blockNumber": 63851934,
+        "blockHash": "0xf79be9f1869361e8bb5c8a4fc04890dafbf6f4f40cfa3aee56f9785f5366b30c",
+        "status": "success",
+        "gasUsed": 166327,
+        "effectiveGasPriceWei": "68260000",
+        "deploymentType": "CREATE",
+        "address": "0x5F02169f808d602992664C8Ddc2FE44c751646B2"
+      },
+      {
+        "component": "locker",
+        "hash": "0x0034deff6ec42489ac2404e95859c75608d5ff57ecf9735336782809fabef784",
+        "nonce": 253,
+        "blockNumber": 63851934,
+        "blockHash": "0xf79be9f1869361e8bb5c8a4fc04890dafbf6f4f40cfa3aee56f9785f5366b30c",
+        "status": "success",
+        "gasUsed": 443157,
+        "effectiveGasPriceWei": "68260000",
+        "deploymentType": "CREATE",
+        "address": "0x1d9018570F5203C76DC560eC7774995348934A6e"
+      },
+      {
+        "component": "hookCreate2Deployer",
+        "hash": "0xca98839bbec53b202d7b3be9d702f1a0d3b3f739c20deb54237c83ec820c9cfa",
+        "nonce": 254,
+        "blockNumber": 63851934,
+        "blockHash": "0xf79be9f1869361e8bb5c8a4fc04890dafbf6f4f40cfa3aee56f9785f5366b30c",
+        "status": "success",
+        "gasUsed": 116373,
+        "effectiveGasPriceWei": "68260000",
+        "deploymentType": "CREATE",
+        "address": "0xA4EC369b9950233D9E53f9047BB4131D251fB776"
+      },
+      {
+        "component": "hook",
+        "hash": "0x401aba47c687948df75acdd65415af2a5b3539cb39d9750db92ddea614b61683",
+        "nonce": 255,
+        "blockNumber": 63851934,
+        "blockHash": "0xf79be9f1869361e8bb5c8a4fc04890dafbf6f4f40cfa3aee56f9785f5366b30c",
+        "status": "success",
+        "gasUsed": 2113017,
+        "effectiveGasPriceWei": "68260000",
+        "deploymentType": "CREATE2",
+        "address": "0x5aE59a607FBE48e62270272Ee0eC266a544368cc"
+      },
+      {
+        "component": "router",
+        "hash": "0xa93af7b27a465f572958be6726ae2495a8acf5e7157e19cd082ec71c251bd7b1",
+        "nonce": 256,
+        "blockNumber": 63851940,
+        "blockHash": "0x57681bcb68138a489fe753ee64ef9f3ba5aa038dca684210d29f0d504904449d",
+        "status": "success",
+        "gasUsed": 1025388,
+        "effectiveGasPriceWei": "67160000",
+        "deploymentType": "CREATE",
+        "address": "0x09cCA9Cc4A6e33770224EaCBBB4f3c9E8F212EB5"
+      },
+      {
+        "component": "factory",
+        "hash": "0xb2d9347b08f4e3ff994ab2035c6f397b350f3045a882264dfe8ef7c244c06902",
+        "nonce": 257,
+        "blockNumber": 63851940,
+        "blockHash": "0x57681bcb68138a489fe753ee64ef9f3ba5aa038dca684210d29f0d504904449d",
+        "status": "success",
+        "gasUsed": 4237822,
+        "effectiveGasPriceWei": "67160000",
+        "deploymentType": "CREATE",
+        "address": "0xf10677910B82bBC6861ED78d7706174924DD767d"
+      }
+    ],
+    "wiring": [
+      {
+        "component": "hook",
+        "hash": "0xc124cf8a822d4cbf21339db061a4ecb7e6a9247b186fbc6745abd1473794e82b",
+        "nonce": 258,
+        "blockNumber": 63851940,
+        "blockHash": "0x57681bcb68138a489fe753ee64ef9f3ba5aa038dca684210d29f0d504904449d",
+        "status": "success",
+        "gasUsed": 45237,
+        "effectiveGasPriceWei": "67160000",
+        "to": "0x5aE59a607FBE48e62270272Ee0eC266a544368cc",
+        "function": "initializeFactory(address)",
+        "arguments": [
+          "0xf10677910B82bBC6861ED78d7706174924DD767d"
+        ]
+      },
+      {
+        "component": "vault",
+        "hash": "0x8325b3bcf2bb61ad7b245d075383f119cb75e57994372a821b4874790652683f",
+        "nonce": 259,
+        "blockNumber": 63851940,
+        "blockHash": "0x57681bcb68138a489fe753ee64ef9f3ba5aa038dca684210d29f0d504904449d",
+        "status": "success",
+        "gasUsed": 45000,
+        "effectiveGasPriceWei": "67160000",
+        "to": "0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E",
+        "function": "initializeHook(address)",
+        "arguments": [
+          "0x5aE59a607FBE48e62270272Ee0eC266a544368cc"
+        ]
+      },
+      {
+        "component": "locker",
+        "hash": "0x80bd5129a03eac25d876d73fa00998141f97e460a96da8d6fcb9bbb195566f72",
+        "nonce": 260,
+        "blockNumber": 63851940,
+        "blockHash": "0x57681bcb68138a489fe753ee64ef9f3ba5aa038dca684210d29f0d504904449d",
+        "status": "success",
+        "gasUsed": 45110,
+        "effectiveGasPriceWei": "67160000",
+        "to": "0x1d9018570F5203C76DC560eC7774995348934A6e",
+        "function": "initializeFactory(address)",
+        "arguments": [
+          "0xf10677910B82bBC6861ED78d7706174924DD767d"
+        ]
+      }
+    ],
+    "launchUnpause": null
+  },
+  "deploymentGasCostWei": "631785321792000",
+  "hook": {
+    "salt": "0x0000000000000000000000000000000000000000000000000000000000000510",
+    "permissionMask": "0x28cc",
+    "erc1967ImplementationSlot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+    "implementationSlotValue": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "inherits": [
+      "IHooks"
+    ],
+    "containsUpgradeEntrypoint": false
+  },
+  "roles": {
+    "factoryOwner": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+    "vaultOwner": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+    "treasury": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09"
+  },
+  "releaseState": {
+    "verifiedAtBlock": 63852644,
+    "factoryPausedDuringVerification": true,
+    "launchesOpenedAtBlock": null,
+    "productionApplicationSwitched": false,
+    "existingTokenCohortPreserved": true,
+    "allowlistSubmitted": false
+  },
+  "stateChecks": {
+    "hook": {
+      "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "positionManager": "0x58daec3116aae6D93017bAAea7749052E8a04fA7",
+      "feeVault": "0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E",
+      "referralRegistry": "0x5F02169f808d602992664C8Ddc2FE44c751646B2",
+      "initializer": "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa",
+      "factory": "0xf10677910B82bBC6861ED78d7706174924DD767d"
+    },
+    "factory": {
+      "owner": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+      "hook": "0x5aE59a607FBE48e62270272Ee0eC266a544368cc",
+      "launchRouter": "0x09cCA9Cc4A6e33770224EaCBBB4f3c9E8F212EB5",
+      "feeVault": "0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E",
+      "locker": "0x1d9018570F5203C76DC560eC7774995348934A6e",
+      "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "positionManager": "0x58daec3116aae6D93017bAAea7749052E8a04fA7",
+      "permit2": "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+      "launchesArePaused": true
+    },
+    "router": {
+      "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "hook": "0x5aE59a607FBE48e62270272Ee0eC266a544368cc"
+    },
+    "locker": {
+      "factory": "0xf10677910B82bBC6861ED78d7706174924DD767d",
+      "positionManager": "0x58daec3116aae6D93017bAAea7749052E8a04fA7"
+    },
+    "vault": {
+      "owner": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+      "treasury": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+      "hook": "0x5aE59a607FBE48e62270272Ee0eC266a544368cc",
+      "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "totalLiabilityEth": "0"
+    }
+  },
+  "compiledRuntimeChecks": {
+    "hook": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 9449,
+      "immutableValues": {
+        "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "positionManager": "0x58daec3116aae6D93017bAAea7749052E8a04fA7",
+        "feeVault": "0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E",
+        "referralRegistry": "0x5F02169f808d602992664C8Ddc2FE44c751646B2",
+        "initializer": "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa"
+      }
+    },
+    "factory": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 18926,
+      "immutableValues": {
+        "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "positionManager": "0x58daec3116aae6D93017bAAea7749052E8a04fA7",
+        "permit2": "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+        "locker": "0x1d9018570F5203C76DC560eC7774995348934A6e",
+        "hook": "0x5aE59a607FBE48e62270272Ee0eC266a544368cc",
+        "launchRouter": "0x09cCA9Cc4A6e33770224EaCBBB4f3c9E8F212EB5",
+        "feeVault": "0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E"
+      }
+    },
+    "router": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 4382,
+      "immutableValues": {
+        "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "hook": "0x5aE59a607FBE48e62270272Ee0eC266a544368cc"
+      }
+    },
+    "vault": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 4602,
+      "immutableValues": {
+        "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "initializer": "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa"
+      }
+    },
+    "registry": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 523,
+      "immutableValues": {}
+    },
+    "locker": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 1792,
+      "immutableValues": {
+        "positionManager": "0x58daec3116aae6D93017bAAea7749052E8a04fA7",
+        "initializer": "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa"
+      }
+    },
+    "hookCreate2Deployer": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 291,
+      "immutableValues": {}
+    }
+  },
+  "freshForkRehearsal": {
+    "blockNumber": 63848428,
+    "blockHash": "0xda9df12c56f151eda7b55f85005a82de7c78fa3070a91c8552f53d76c093db7d",
+    "command": "RH_MAINNET_RPC_URL=https://rpc.ctrl.finance ./scripts/test-immutable-fork.sh",
+    "result": "4 passed, 0 failed; actual Universal Router 2.1.1, four swap modes, empty hook data"
+  },
+  "localValidation": {
+    "command": "./scripts/test-all.sh",
+    "solidityPassed": 136,
+    "solidityFailed": 0,
+    "optInForkSkipped": 5,
+    "formatting": "passed",
+    "deploymentWrappers": "passed",
+    "v2StorageLayout": "passed"
+  },
+  "verification": {
+    "checkedAt": "2026-09-15T18:18:57.804292+00:00",
+    "sourcify": {
+      "hook": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/4663/0x5aE59a607FBE48e62270272Ee0eC266a544368cc"
+      },
+      "factory": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/4663/0xf10677910B82bBC6861ED78d7706174924DD767d"
+      },
+      "router": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/4663/0x09cCA9Cc4A6e33770224EaCBBB4f3c9E8F212EB5"
+      },
+      "vault": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/4663/0x7eFCE9ff1b6F8aB5f37747DFd3E46547b655f97E"
+      },
+      "registry": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/4663/0x5F02169f808d602992664C8Ddc2FE44c751646B2"
+      },
+      "locker": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/4663/0x1d9018570F5203C76DC560eC7774995348934A6e"
+      },
+      "hookCreate2Deployer": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/4663/0xA4EC369b9950233D9E53f9047BB4131D251fB776"
+      }
+    },
+    "blockscout": {
+      "status": "pending",
+      "hookUrl": "https://robinhoodchain.blockscout.com/address/0x5aE59a607FBE48e62270272Ee0eC266a544368cc?tab=contract",
+      "notes": "Blockscout Sourcify widget confirms exact match. Native Code tab has not imported it. API requests encounter Cloudflare challenge; browser file upload unavailable to automation."
+    }
+  },
+  "audit": {
+    "status": "unaudited",
+    "report": null
+  },
+  "notes": [
+    "Uses official Robinhood mainnet PoolManager, PositionManager and Permit2 with pinned runtime fingerprints.",
+    "All seven newly deployed contracts exactly match local compiled runtime after applying their constructor immutable values.",
+    "Deployment transaction labels and hashes were reconciled against live RPC nonce, input, destination and receipts; the Foundry broadcast transaction hash associations were inconsistent for nonces 256 and 258-260.",
+    "Existing factory 0x66d8623FBBe3C01E0cc6c63F9258435D1bb801a0 and hook proxy 0x0B209BAeC82093d1bBc5c4Aa44b6C591bF3428CC remain operational.",
+    "New factory is deliberately paused. Cohort-aware backend/frontend integration, a funded example pool and submitter contact details are still required for rollout and allowlist submission.",
+    "No private operator environment, signing keys or Foundry sensitive cache data are included."
+  ]
+}
