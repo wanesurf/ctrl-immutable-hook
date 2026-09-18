@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-09-18T03:38:05.525348+00:00",
+  "foundryCommit": "5e88010a83d1b87b8f4d13058e42a2949d3e9dc0",
+  "solc": "0.8.26",
+  "checks": [
+    {
+      "command": "forge build",
+      "status": "passed"
+    },
+    {
+      "command": "forge test",
+      "passed": 68,
+      "failed": 0,
+      "skipped": 3,
+      "skipReason": "RPC fork suites disabled by default",
+      "nativeProfileTestsPassed": 27
+    },
+    {
+      "command": "RUN_ARC_FORK_TESTS=true ARC_MAINNET_RPC_URL=https://rpc.mainnet.arc.io forge test --match-contract CtrlArcForkTest",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "forkBlock": 21173458,
+      "scope": "Fresh local stack against Arc PoolManager/PositionManager; test helper router for exact-output swaps; standard Foundry runtime."
+    },
+    {
+      "command": "./scripts/test-immutable-deployment.sh",
+      "status": "passed"
+    },
+    {
+      "command": "python3 scripts/verify-source.py --chain-id 5042",
+      "contractsVerified": 7,
+      "status": "passed"
+    },
+    {
+      "command": "python3 scripts/verify-source.py --chain-id 4663",
+      "contractsVerified": 7,
+      "status": "passed"
+    },
+    {
+      "check": "Verifier rejection checks in an isolated temporary copy",
+      "cases": [
+        "changed source",
+        "mismatched ABI",
+        "modified deployment compiler input",
+        "wrong RPC chain"
+      ],
+      "status": "passed"
+    },
+    {
+      "check": "README Arc addresses and relative documentation links",
+      "status": "passed"
+    }
+  ]
+}

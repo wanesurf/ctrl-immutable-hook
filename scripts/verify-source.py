@@ -34,7 +34,9 @@ def nodes(value):
 
 def rpc(url, method, params):
     data = json.dumps({"jsonrpc": "2.0", "id": 1, "method": method, "params": params}).encode()
-    request = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
+    request = urllib.request.Request(url, data=data, headers={
+        "Content-Type": "application/json", "User-Agent": "ctrl-source-verifier/1.0",
+    })
     with urllib.request.urlopen(request, timeout=30) as response:
         result = json.load(response)
     require("error" not in result, f"RPC method {method} failed")
@@ -43,11 +45,14 @@ def rpc(url, method, params):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--rpc-url", help="Enable read-only checks against Robinhood mainnet")
+    parser.add_argument("--chain-id", type=int, choices=(5042, 4663), default=5042,
+                        help="Deployment to verify: Arc 5042 (default) or Robinhood 4663")
+    parser.add_argument("--rpc-url", help="Enable read-only checks against the selected chain")
     parser.add_argument("--output", type=Path, help="Write the JSON verification report")
     args = parser.parse_args()
-    provenance = read_json("verification/source-provenance.json")
-    manifest = read_json("deployments/4663-mainnet.json")
+    evidence = Path("verification/5042-mainnet" if args.chain_id == 5042 else "verification")
+    provenance = read_json(evidence / "source-provenance.json")
+    manifest = read_json(f"deployments/{args.chain_id}-mainnet.json")
 
     for path, digest in provenance["files"].items():
         require(hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest,
@@ -62,8 +67,17 @@ def main():
         creation = bytes.fromhex(artifact["bytecode"]["object"].removeprefix("0x"))
         require(hashlib.sha256(creation).hexdigest() == expected["creationBytecodeSha256"],
                 f"Creation bytecode mismatch: {contract}")
-        require(json.loads(artifact["rawMetadata"]) == read_json(f"verification/{contract}.metadata.json"),
+        require(json.loads(artifact["rawMetadata"]) == read_json(evidence / f"{contract}.metadata.json"),
                 f"Compiler metadata mismatch: {contract}")
+        require(artifact["abi"] == read_json(f"abi/{contract}.json"), f"ABI mismatch: {contract}")
+        if args.chain_id == 5042:
+            input_path = evidence / f"{contract}.standard-input.json"
+            require(hashlib.sha256((ROOT / input_path).read_bytes()).hexdigest()
+                    == manifest["constructorArguments"][component]["standardInputSha256"],
+                    f"Deployment compiler input changed: {contract}")
+            for source, entry in read_json(input_path)["sources"].items():
+                require((ROOT / source).read_bytes() == entry["content"].encode(),
+                        f"Source differs from deployment compiler input: {source}")
         artifacts[component] = artifact
 
     hook_functions = {entry["name"] for entry in artifacts["hook"]["abi"] if entry["type"] == "function"}
@@ -71,6 +85,7 @@ def main():
             "Unexpected upgrade entry point in hook ABI")
     report = {
         "checkedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "chainId": args.chain_id,
         "sourceFilesVerified": len(provenance["files"]),
         "creationBytecodeAndMetadataVerified": list(artifacts),
         "hookUpgradeEntrypointsAbsent": True,
@@ -87,7 +102,8 @@ def main():
             runtime = bytearray.fromhex(artifact["deployedBytecode"]["object"].removeprefix("0x"))
             variables = {str(node["id"]): node["name"] for node in nodes(artifact["ast"])
                          if node.get("nodeType") == "VariableDeclaration" and node.get("mutability") == "immutable"}
-            values = manifest["compiledRuntimeChecks"][component]["immutableValues"]
+            values = (provenance["artifacts"][component]["immutableValues"] if args.chain_id == 5042
+                      else manifest["compiledRuntimeChecks"][component]["immutableValues"])
             referenced_names = set()
             for variable_id, offsets in artifact["deployedBytecode"].get("immutableReferences", {}).items():
                 name = variables[variable_id]

@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 2,
+  "network": "Arc",
+  "environment": "mainnet",
+  "chainId": 5042,
+  "deploymentKind": "direct-immutable",
+  "deploymentBlock": 21178637,
+  "factoryDeploymentBlock": 21178639,
+  "hookDeploymentBlock": 21178639,
+  "wiringCompletedAtBlock": 21178640,
+  "deployedAt": "2026-09-16T15:29:14+00:00",
+  "sourceBaseCommit": "a0a9f480f6ff67a54b300b97b4a1bfc22b43b5ff",
+  "sourceIncludesUncommittedArcFiles": true,
+  "deployer": "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa",
+  "rpcUsed": "https://rpc.mainnet.arc.io",
+  "addresses": {
+    "vault": "0xADa4794e5Ac54Df44C9608b23C14684458Af7367",
+    "registry": "0xF412eD814fe5821910CFEDE4910f7231c51D9EC5",
+    "locker": "0x1eFe83337744F5e84fD51b01BD4e57fD013454d3",
+    "hookCreate2Deployer": "0xc897570c27AF50603A08490C8621e3d0EFfa4b27",
+    "hook": "0xE0e48AE841741c1C5A6eFa1DEe2838E62d5168CC",
+    "router": "0xe5fC122B4563bAcbAF429cFa78Ae9Cb1D1A93686",
+    "factory": "0x936eED62da1a4e7A7fb1fABFe2e10C4bCbD7B322"
+  },
+  "codeHashes": {
+    "vault": "0xe231e488e14838dadf9944e4074cb97bf17c784204e405890b1ec156ee715b7c",
+    "registry": "0xa812331d45df3303705a5ca435a72f63326378dba85ffe64bcd3e8c9902eba67",
+    "locker": "0x06db0e22199f47dd2f2f9742bbce1891dab8d88cd6612c961b9d055d8246ee0d",
+    "hookCreate2Deployer": "0xc1d73a8ef1fc06c14de8248dbc9bf267e25e47af4fbb94504ce17c82cdd79435",
+    "hook": "0x0f176d35fff5bd5a41153a1730c0a352b7fdb3b3bc421b0ff650464ea5606fa4",
+    "router": "0xbb4fa07076b531a118eeaca79d94ad4bde668b3c293b595fbdd68f7a4d60e372",
+    "factory": "0x1c37ca510b18215d2c2bdb9ab452097b0773743614f623bc804c3a42b424966a"
+  },
+  "constructorArguments": {
+    "vault": {
+      "contract": "CtrlFeeVault",
+      "encodedArguments": "0x00000000000000000000000099ffd2fdcaf29afddbbd49655f9331ff3ac1aa090000000000000000000000008366a39cc670b4001a1121b8f6a443a643e4095100000000000000000000000099ffd2fdcaf29afddbbd49655f9331ff3ac1aa09000000000000000000000000b84fc033ecf9c16a0c5273c6520600931f2d9cfa",
+      "standardInputSha256": "4371394c3cf6ec931c52d0021693493d1f17eefd9deb8c68e7e50e5a59d37ea5"
+    },
+    "registry": {
+      "contract": "CtrlReferralRegistry",
+      "encodedArguments": "0x",
+      "standardInputSha256": "9e10e5a4b3320469c8cda2ff693ecb1388a75b5f9fe013a0557df7d10d3f2e56"
+    },
+    "locker": {
+      "contract": "CtrlPositionLocker",
+      "encodedArguments": "0x0000000000000000000000006049c9a0e26405c0985f9e3685c87d0ae917f82b000000000000000000000000b84fc033ecf9c16a0c5273c6520600931f2d9cfa",
+      "standardInputSha256": "08ee99aa2ac1c25350da24f0f5027bf5e849cd6c836d71d73fcb88e5b2f675d1"
+    },
+    "hookCreate2Deployer": {
+      "contract": "CtrlNativeHookCreate2Deployer",
+      "encodedArguments": "0x",
+      "standardInputSha256": "24d68ceff3f4db5a6449cc4cf1dbb42da0b7f709c37964484b762383cd40486c"
+    },
+    "hook": {
+      "contract": "CtrlNativeLaunchHook",
+      "encodedArguments": "0x0000000000000000000000008366a39cc670b4001a1121b8f6a443a643e409510000000000000000000000006049c9a0e26405c0985f9e3685c87d0ae917f82b000000000000000000000000ada4794e5ac54df44c9608b23c14684458af7367000000000000000000000000f412ed814fe5821910cfede4910f7231c51d9ec5000000000000000000000000b84fc033ecf9c16a0c5273c6520600931f2d9cfa00000000000000000000000000000000000000000000021f952f8eeb0b3a0000000000000000000000000000000000000000000000000000000000000001edc0",
+      "standardInputSha256": "2036767db1c4da3d24b287a8242b1c971148a746b920802126dfc61e6de3eef1"
+    },
+    "router": {
+      "contract": "CtrlLaunchRouter",
+      "encodedArguments": "0x0000000000000000000000008366a39cc670b4001a1121b8f6a443a643e40951000000000000000000000000e0e48ae841741c1c5a6efa1dee2838e62d5168cc",
+      "standardInputSha256": "6020b2d66ab1bedc920ba7e3b39d7e50a589042feb70bb2946c80e72db8edbac"
+    },
+    "factory": {
+      "contract": "CtrlNativeV4Factory",
+      "encodedArguments": "0x00000000000000000000000099ffd2fdcaf29afddbbd49655f9331ff3ac1aa090000000000000000000000008366a39cc670b4001a1121b8f6a443a643e409510000000000000000000000006049c9a0e26405c0985f9e3685c87d0ae917f82b000000000000000000000000000000000022d473030f116ddee9f6b43ac78ba30000000000000000000000001efe83337744f5e84fd51b01bd4e57fd013454d3000000000000000000000000e0e48ae841741c1c5a6efa1dee2838e62d5168cc000000000000000000000000e5fc122b4563bacbaf429cfa78ae9cb1d1a93686000000000000000000000000ada4794e5ac54df44c9608b23c14684458af73670000000000000000000000000000000000000000000000001090fb1c3fba2000000000000000000000000000000000000000000000000000000000000001edc0",
+      "standardInputSha256": "e7deef52337b8a347a6c7dc0d81334d69ec1b7574577831e97490106e7291622"
+    }
+  },
+  "transactions": {
+    "deployments": [
+      {
+        "component": "vault",
+        "hash": "0x729723b1735d2ca010ea451422fc58f1906092e26b049a416e1ab9288d07c921",
+        "nonce": 0,
+        "blockNumber": 21178637,
+        "status": "success",
+        "gasUsed": 1125652,
+        "effectiveGasPriceWei": "36931830452",
+        "address": "0xADa4794e5Ac54Df44C9608b23C14684458Af7367",
+        "deploymentType": "CREATE"
+      },
+      {
+        "component": "registry",
+        "hash": "0x9d1ad0d96950a16d492d0f9434821c4f75b3053e028e1b944ecf1ccc0c75f066",
+        "nonce": 1,
+        "blockNumber": 21178638,
+        "status": "success",
+        "gasUsed": 166327,
+        "effectiveGasPriceWei": "36869487002",
+        "address": "0xF412eD814fe5821910CFEDE4910f7231c51D9EC5",
+        "deploymentType": "CREATE"
+      },
+      {
+        "component": "locker",
+        "hash": "0x4f6981f4e3d8766c744885e80fc902a2cc84045afd7cdb74c826b5098543bfb7",
+        "nonce": 2,
+        "blockNumber": 21178638,
+        "status": "success",
+        "gasUsed": 443157,
+        "effectiveGasPriceWei": "36869487002",
+        "address": "0x1eFe83337744F5e84fD51b01BD4e57fD013454d3",
+        "deploymentType": "CREATE"
+      },
+      {
+        "component": "hookCreate2Deployer",
+        "hash": "0x76db335876a998fef73ef5d03bbc629989d53cfae5004b3bd0e106a0ffa5d190",
+        "nonce": 3,
+        "blockNumber": 21178638,
+        "status": "success",
+        "gasUsed": 116373,
+        "effectiveGasPriceWei": "36869487002",
+        "address": "0xc897570c27AF50603A08490C8621e3d0EFfa4b27",
+        "deploymentType": "CREATE"
+      },
+      {
+        "component": "hook",
+        "hash": "0xeebf1021bc07da37984db22498ad3e23eb4a1e4f015776ad07d235cbfb25f71b",
+        "nonce": 4,
+        "blockNumber": 21178639,
+        "status": "success",
+        "gasUsed": 2166662,
+        "effectiveGasPriceWei": "36859991871",
+        "address": "0xE0e48AE841741c1C5A6eFa1DEe2838E62d5168CC",
+        "deploymentType": "CREATE2"
+      },
+      {
+        "component": "router",
+        "hash": "0x3c346e9767e8f855b41212dec5366b36b6ae74768aff39289221946c350316aa",
+        "nonce": 5,
+        "blockNumber": 21178639,
+        "status": "success",
+        "gasUsed": 1025388,
+        "effectiveGasPriceWei": "36859991871",
+        "address": "0xe5fC122B4563bAcbAF429cFa78Ae9Cb1D1A93686",
+        "deploymentType": "CREATE"
+      },
+      {
+        "component": "factory",
+        "hash": "0xd8b3fadfce811f8ded77354638350d7bad016261e340efa822a2a6f5c3184545",
+        "nonce": 6,
+        "blockNumber": 21178639,
+        "status": "success",
+        "gasUsed": 4392967,
+        "effectiveGasPriceWei": "36859991871",
+        "address": "0x936eED62da1a4e7A7fb1fABFe2e10C4bCbD7B322",
+        "deploymentType": "CREATE"
+      }
+    ],
+    "wiring": [
+      {
+        "component": "hook",
+        "hash": "0x2102a76892793efdcc8be09a66251625743a96ce5c91d4cd7d968c9a016c7fc4",
+        "nonce": 7,
+        "blockNumber": 21178639,
+        "status": "success",
+        "gasUsed": 45247,
+        "effectiveGasPriceWei": "36859991871",
+        "to": "0xe0e48ae841741c1c5a6efa1dee2838e62d5168cc",
+        "function": "initializeFactory(address)",
+        "arguments": [
+          "0x936eED62da1a4e7A7fb1fABFe2e10C4bCbD7B322"
+        ]
+      },
+      {
+        "component": "vault",
+        "hash": "0x3ce47336b6bc58c14ea078ed47ed759e10f463e28d4b7d617cfde88bb35f729e",
+        "nonce": 8,
+        "blockNumber": 21178640,
+        "status": "success",
+        "gasUsed": 45000,
+        "effectiveGasPriceWei": "36893751136",
+        "to": "0xada4794e5ac54df44c9608b23c14684458af7367",
+        "function": "initializeHook(address)",
+        "arguments": [
+          "0xE0e48AE841741c1C5A6eFa1DEe2838E62d5168CC"
+        ]
+      },
+      {
+        "component": "locker",
+        "hash": "0xd6f5fe02e1a52d20ad436c2e4e3358b8327e92d333d67347e433b1430071ac42",
+        "nonce": 9,
+        "blockNumber": 21178640,
+        "status": "success",
+        "gasUsed": 45110,
+        "effectiveGasPriceWei": "36893751136",
+        "to": "0x1efe83337744f5e84fd51b01bd4e57fd013454d3",
+        "function": "initializeFactory(address)",
+        "arguments": [
+          "0x936eED62da1a4e7A7fb1fABFe2e10C4bCbD7B322"
+        ]
+      }
+    ],
+    "launchUnpause": null
+  },
+  "deploymentGasCostWei": "352910328967214322",
+  "economics": {
+    "chainId": 5042,
+    "nativeCurrency": {
+      "symbol": "USDC",
+      "decimals": 18
+    },
+    "observedAt": "2026-09-16T15:28:13.005808+00:00",
+    "ethUsd": "2387.46000",
+    "source": "https://api.kraken.com/0/public/Ticker?pair=ETHUSD",
+    "launchFeeNative": "1.19373",
+    "graduationThresholdNative": "10027.332",
+    "initialTick": 126400,
+    "initialPriceRelativeErrorPercent": 0.16270298217613277,
+    "environment": {
+      "ARC_LAUNCH_FEE_WEI": "1193730000000000000",
+      "ARC_GRADUATION_THRESHOLD_WEI": "10027332000000000000000",
+      "ARC_INITIAL_TICK": "126400"
+    }
+  },
+  "stateChecks": {
+    "vault": {
+      "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "initializer": "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa",
+      "owner": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+      "treasury": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+      "hook": "0xE0e48AE841741c1C5A6eFa1DEe2838E62d5168CC"
+    },
+    "registry": {},
+    "locker": {
+      "positionManager": "0x6049c9a0e26405C0985f9E3685C87d0aE917f82B",
+      "initializer": "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa",
+      "factory": "0x936eED62da1a4e7A7fb1fABFe2e10C4bCbD7B322"
+    },
+    "hookCreate2Deployer": {},
+    "hook": {
+      "GRADUATION_THRESHOLD": "10027332000000000000000",
+      "INITIAL_TICK": "126400",
+      "TICK_UPPER": "126400",
+      "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "positionManager": "0x6049c9a0e26405C0985f9E3685C87d0aE917f82B",
+      "feeVault": "0xADa4794e5Ac54Df44C9608b23C14684458Af7367",
+      "referralRegistry": "0xF412eD814fe5821910CFEDE4910f7231c51D9EC5",
+      "initializer": "0xB84fc033ECf9C16a0C5273c6520600931F2D9cfa",
+      "factory": "0x936eED62da1a4e7A7fb1fABFe2e10C4bCbD7B322"
+    },
+    "router": {
+      "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "hook": "0xE0e48AE841741c1C5A6eFa1DEe2838E62d5168CC"
+    },
+    "factory": {
+      "LAUNCH_FEE": "1193730000000000000",
+      "INITIAL_TICK": "126400",
+      "TICK_UPPER": "126400",
+      "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "positionManager": "0x6049c9a0e26405C0985f9E3685C87d0aE917f82B",
+      "permit2": "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+      "locker": "0x1eFe83337744F5e84fD51b01BD4e57fD013454d3",
+      "hook": "0xE0e48AE841741c1C5A6eFa1DEe2838E62d5168CC",
+      "launchRouter": "0xe5fC122B4563bAcbAF429cFa78Ae9Cb1D1A93686",
+      "feeVault": "0xADa4794e5Ac54Df44C9608b23C14684458Af7367",
+      "owner": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+      "launchesArePaused": true
+    }
+  },
+  "compiledRuntimeChecks": {
+    "vault": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 4602
+    },
+    "registry": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 523
+    },
+    "locker": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 1792
+    },
+    "hookCreate2Deployer": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 291
+    },
+    "hook": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 9684
+    },
+    "router": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 4382
+    },
+    "factory": {
+      "matchesCompiledRuntimeExactly": true,
+      "runtimeByteCount": 19630
+    }
+  },
+  "roles": {
+    "factoryOwner": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+    "vaultOwner": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09",
+    "treasury": "0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09"
+  },
+  "hook": {
+    "permissionMask": "0x28cc",
+    "salt": "0x0000000000000000000000000000000000000000000000000000000000002852",
+    "implementationSlotValue": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "containsUpgradeEntrypoint": false
+  },
+  "releaseState": {
+    "verifiedAtBlock": 21178839,
+    "factoryPausedDuringVerification": true,
+    "productionApplicationSwitched": true,
+    "launchesOpenedAtBlock": null,
+    "productionDeploymentId": "dpl_7xwtVFPD1VTU5zN3Qw8w6cLjx21x",
+    "productionVerifiedAt": "2026-09-16T16:00:58.584214+00:00",
+    "publicApi": "https://arc-api.ctrl.finance",
+    "factoryStillPaused": true
+  },
+  "toolchain": {
+    "solc": "0.8.26+commit.8a97fa7a",
+    "optimizerRuns": 200,
+    "viaIr": true,
+    "evmVersion": "cancun",
+    "arcFoundry": "v0.8.0-1"
+  },
+  "verification": {
+    "checkedAt": "2026-09-16T15:35:39.673338+00:00",
+    "sourcify": {
+      "vault": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/5042/0xADa4794e5Ac54Df44C9608b23C14684458Af7367"
+      },
+      "registry": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/5042/0xF412eD814fe5821910CFEDE4910f7231c51D9EC5"
+      },
+      "locker": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/5042/0x1eFe83337744F5e84fD51b01BD4e57fD013454d3"
+      },
+      "hookCreate2Deployer": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/5042/0xc897570c27AF50603A08490C8621e3d0EFfa4b27"
+      },
+      "hook": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/5042/0xE0e48AE841741c1C5A6eFa1DEe2838E62d5168CC"
+      },
+      "router": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/5042/0xe5fC122B4563bAcbAF429cFa78Ae9Cb1D1A93686"
+      },
+      "factory": {
+        "status": "exact_match",
+        "creationMatch": "exact_match",
+        "runtimeMatch": "exact_match",
+        "url": "https://repo.sourcify.dev/5042/0x936eED62da1a4e7A7fb1fABFe2e10C4bCbD7B322"
+      }
+    }
+  },
+  "notes": [
+    "All deployment and wiring transaction hashes were reconciled by nonce and calldata against live RPC; Foundry transaction labels were inconsistent. Use this manifest for transaction hashes.",
+    "Source base commit predates the Arc additions. The standard-input files and their SHA-256 digests capture the exact deployed sources.",
+    "The hook has no proxy, UUPS inheritance, or upgrade entrypoint. Factory owner and treasury are the existing 2-of-3 Safe activated on Arc."
+  ]
+}

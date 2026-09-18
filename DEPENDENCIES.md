@@ -1,6 +1,6 @@
 # Vendored dependencies
 
-Only the transitive files needed by the included contracts, deployment script,
+Only the transitive files needed by the included contracts, deployment scripts,
 and tests are included. Paths and contents match the original build. Unused
 remappings remain pinned because Solidity includes them in metadata.
 
@@ -13,15 +13,16 @@ remappings remain pinned because Solidity includes them in metadata.
 
 The forge-std MIT license was restored from the exact upstream pinned commit;
 the original internal snapshot contained only its Apache license file. All
-copied Solidity source hashes are listed in `verification/source-provenance.json`.
+copied Solidity source hashes are listed in `verification/source-provenance.json`
+(Robinhood) and `verification/5042-mainnet/source-provenance.json` (Arc).
 
 ## Existing external deployments
 
-| Dependency | Robinhood Chain address |
-| --- | --- |
-| PoolManager | `0x8366a39CC670B4001A1121B8F6A443A643e40951` |
-| PositionManager | `0x58daec3116aae6D93017bAAea7749052E8a04fA7` |
-| Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
+| Dependency | Arc (5042) | Robinhood Chain (4663) |
+| --- | --- | --- |
+| PoolManager | `0x8366a39CC670B4001A1121B8F6A443A643e40951` | `0x8366a39CC670B4001A1121B8F6A443A643e40951` |
+| PositionManager | `0x6049c9a0e26405C0985f9E3685C87d0aE917f82B` | `0x58daec3116aae6D93017bAAea7749052E8a04fA7` |
+| Permit2 | `0x000000000022D473030F116dDEE9F6B43aC78BA3` | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 
 These are existing Uniswap deployments. Ctrl uses the interfaces in this source
 tree; the deployment manifest records their reviewed runtime hashes.

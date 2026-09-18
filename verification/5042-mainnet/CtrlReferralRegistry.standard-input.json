@@ -1,0 +1,32 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "src/CtrlReferralRegistry.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.26;\n\n/// @notice Global, non-enumerable referral payout registry shared by every Ctrl pool.\ncontract CtrlReferralRegistry {\n    error AlreadyRegistered();\n    error NotRegistered();\n    error ZeroAddress();\n\n    event ReferrerRegistered(address indexed referrer, address indexed payout);\n    event ReferralPayoutUpdated(address indexed referrer, address indexed previousPayout, address indexed newPayout);\n\n    mapping(address referrer => address payout) public payoutOf;\n\n    function registerReferrer(address payout) external {\n        if (payout == address(0)) revert ZeroAddress();\n        if (payoutOf[msg.sender] != address(0)) revert AlreadyRegistered();\n\n        payoutOf[msg.sender] = payout;\n        emit ReferrerRegistered(msg.sender, payout);\n    }\n\n    function updatePayout(address newPayout) external {\n        if (newPayout == address(0)) revert ZeroAddress();\n        address previousPayout = payoutOf[msg.sender];\n        if (previousPayout == address(0)) revert NotRegistered();\n\n        payoutOf[msg.sender] = newPayout;\n        emit ReferralPayoutUpdated(msg.sender, previousPayout, newPayout);\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin-v5.6.1/contracts/=lib/openzeppelin-contracts-v5.6.1/contracts/",
+      "@openzeppelin/contracts/=lib/openzeppelin-contracts-v5.6.1/contracts/",
+      "@uniswap/v4-core/=lib/v4-core/",
+      "erc4626-tests/=lib/openzeppelin-contracts-v5.6.1/lib/erc4626-tests/",
+      "forge-std/=lib/forge-std/src/",
+      "halmos-cheatcodes/=lib/openzeppelin-contracts-v5.6.1/lib/halmos-cheatcodes/src/",
+      "openzeppelin-contracts-v5.6.1/=lib/openzeppelin-contracts-v5.6.1/",
+      "openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/",
+      "solmate/=lib/solmate/",
+      "v4-core/=lib/v4-core/src/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "metadata": {
+      "bytecodeHash": "ipfs"
+    },
+    "evmVersion": "cancun",
+    "libraries": {},
+    "viaIR": true
+  }
+}

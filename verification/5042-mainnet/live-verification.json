@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-09-18T03:37:14.085475+00:00",
+  "chainId": 5042,
+  "sourceFilesVerified": 69,
+  "creationBytecodeAndMetadataVerified": [
+    "vault",
+    "registry",
+    "locker",
+    "hookCreate2Deployer",
+    "hook",
+    "router",
+    "factory"
+  ],
+  "hookUpgradeEntrypointsAbsent": true,
+  "blockNumber": 21435217,
+  "blockHash": "0xe558cd33c3886619b18fe07ec66086b472cb0006e9e96b25db56862809e1b833",
+  "runtimeChecks": {
+    "vault": {
+      "address": "0xADa4794e5Ac54Df44C9608b23C14684458Af7367",
+      "exactMatch": true,
+      "runtimeBytes": 4602,
+      "codeHash": "0xe231e488e14838dadf9944e4074cb97bf17c784204e405890b1ec156ee715b7c"
+    },
+    "registry": {
+      "address": "0xF412eD814fe5821910CFEDE4910f7231c51D9EC5",
+      "exactMatch": true,
+      "runtimeBytes": 523,
+      "codeHash": "0xa812331d45df3303705a5ca435a72f63326378dba85ffe64bcd3e8c9902eba67"
+    },
+    "locker": {
+      "address": "0x1eFe83337744F5e84fD51b01BD4e57fD013454d3",
+      "exactMatch": true,
+      "runtimeBytes": 1792,
+      "codeHash": "0x06db0e22199f47dd2f2f9742bbce1891dab8d88cd6612c961b9d055d8246ee0d"
+    },
+    "hookCreate2Deployer": {
+      "address": "0xc897570c27AF50603A08490C8621e3d0EFfa4b27",
+      "exactMatch": true,
+      "runtimeBytes": 291,
+      "codeHash": "0xc1d73a8ef1fc06c14de8248dbc9bf267e25e47af4fbb94504ce17c82cdd79435"
+    },
+    "hook": {
+      "address": "0xE0e48AE841741c1C5A6eFa1DEe2838E62d5168CC",
+      "exactMatch": true,
+      "runtimeBytes": 9684,
+      "codeHash": "0x0f176d35fff5bd5a41153a1730c0a352b7fdb3b3bc421b0ff650464ea5606fa4"
+    },
+    "router": {
+      "address": "0xe5fC122B4563bAcbAF429cFa78Ae9Cb1D1A93686",
+      "exactMatch": true,
+      "runtimeBytes": 4382,
+      "codeHash": "0xbb4fa07076b531a118eeaca79d94ad4bde668b3c293b595fbdd68f7a4d60e372"
+    },
+    "factory": {
+      "address": "0x936eED62da1a4e7A7fb1fABFe2e10C4bCbD7B322",
+      "exactMatch": true,
+      "runtimeBytes": 19630,
+      "codeHash": "0x1c37ca510b18215d2c2bdb9ab452097b0773743614f623bc804c3a42b424966a"
+    }
+  },
+  "factoryPaused": false,
+  "totalLaunches": 12
+}

@@ -1,0 +1,163 @@
+{
+  "compiler": {
+    "version": "0.8.26+commit.8a97fa7a"
+  },
+  "language": "Solidity",
+  "output": {
+    "abi": [
+      {
+        "inputs": [],
+        "name": "AlreadyRegistered",
+        "type": "error"
+      },
+      {
+        "inputs": [],
+        "name": "NotRegistered",
+        "type": "error"
+      },
+      {
+        "inputs": [],
+        "name": "ZeroAddress",
+        "type": "error"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "referrer",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "previousPayout",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "newPayout",
+            "type": "address"
+          }
+        ],
+        "name": "ReferralPayoutUpdated",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "referrer",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "payout",
+            "type": "address"
+          }
+        ],
+        "name": "ReferrerRegistered",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "referrer",
+            "type": "address"
+          }
+        ],
+        "name": "payoutOf",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "payout",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "payout",
+            "type": "address"
+          }
+        ],
+        "name": "registerReferrer",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "newPayout",
+            "type": "address"
+          }
+        ],
+        "name": "updatePayout",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ],
+    "devdoc": {
+      "kind": "dev",
+      "methods": {},
+      "version": 1
+    },
+    "userdoc": {
+      "kind": "user",
+      "methods": {},
+      "notice": "Global, non-enumerable referral payout registry shared by every Ctrl pool.",
+      "version": 1
+    }
+  },
+  "settings": {
+    "compilationTarget": {
+      "src/CtrlReferralRegistry.sol": "CtrlReferralRegistry"
+    },
+    "evmVersion": "cancun",
+    "libraries": {},
+    "metadata": {
+      "bytecodeHash": "ipfs"
+    },
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "remappings": [
+      ":@openzeppelin-v5.6.1/contracts/=lib/openzeppelin-contracts-v5.6.1/contracts/",
+      ":@openzeppelin/contracts/=lib/openzeppelin-contracts-v5.6.1/contracts/",
+      ":@uniswap/v4-core/=lib/v4-core/",
+      ":erc4626-tests/=lib/openzeppelin-contracts-v5.6.1/lib/erc4626-tests/",
+      ":forge-std/=lib/forge-std/src/",
+      ":halmos-cheatcodes/=lib/openzeppelin-contracts-v5.6.1/lib/halmos-cheatcodes/src/",
+      ":openzeppelin-contracts-v5.6.1/=lib/openzeppelin-contracts-v5.6.1/",
+      ":openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/",
+      ":solmate/=lib/solmate/",
+      ":v4-core/=lib/v4-core/src/"
+    ],
+    "viaIR": true
+  },
+  "sources": {
+    "src/CtrlReferralRegistry.sol": {
+      "keccak256": "0x6d050addb8ee95bb16c52f1dd80c511d57d9283f17c641f69d243d5e078514e2",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://4b8225d3d717d45a48ce5694d49fbbb0d0559a5503416ab697d0525ba45cf443",
+        "dweb:/ipfs/QmcFne4f8xAqTATy6CFrn1mG1DCySnS1oPv7iZq8gd27Cf"
+      ]
+    }
+  },
+  "version": 1
+}

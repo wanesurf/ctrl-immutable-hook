@@ -1,0 +1,150 @@
+{
+  "chainId": 5042,
+  "sourceBaseCommit": "a0a9f480f6ff67a54b300b97b4a1bfc22b43b5ff",
+  "sourceIncludesUncommittedArcFiles": true,
+  "sourceEvidence": "Original deployment Standard JSON inputs, whose SHA-256 hashes are recorded in deployments/5042-mainnet.json. Shared sources are identical to the Robinhood publication.",
+  "files": {
+    "lib/forge-std/src/Base.sol": "d5a2918c9ba38629bcf1c8b5206a0b779eb92576bbebec2024ec6438562ecf74",
+    "lib/forge-std/src/Script.sol": "c4de2ae936fa7bb4f4250a3908c6bce7acdc84034156cb252fdc2d9a1c020012",
+    "lib/forge-std/src/StdChains.sol": "ea677f924a6cecdaa4e28002cc8a013698e35813072ae79e4dcb9330f4f32928",
+    "lib/forge-std/src/StdCheats.sol": "cbdfdadacf12e0b6cab311420fb8543ce8105fe794ecdb73d905e46ec09d027c",
+    "lib/forge-std/src/StdJson.sol": "0211b47e93dbeb6a7de6112470a77137038ed73b79b015847f013e49fcd7511f",
+    "lib/forge-std/src/StdMath.sol": "f04fc0616741563eb32d66c11af7fdca55a7202221e14282268c7be851fc63ab",
+    "lib/forge-std/src/StdStorage.sol": "c6dbb05b29be5bcbfabf06ea46b64fe9fbdb7542681795614ca3dee248214215",
+    "lib/forge-std/src/StdStyle.sol": "324c2b0e100e88edbdb75f60f8a4c42f056f8d618ae5f56b1c404df64e8280a7",
+    "lib/forge-std/src/StdUtils.sol": "8bb419a63d92061cf943160bf35e164a425910f46efd8516869e07d2ab71d534",
+    "lib/forge-std/src/Vm.sol": "9ed10705966cec6d7e92a705659039aa8859c8d34bf2e6ba83de7165e984ea91",
+    "lib/forge-std/src/console.sol": "896c5a5a5c235cb11a39876d430e1fc2c621e7950c4637ca58251b84b053f178",
+    "lib/forge-std/src/console2.sol": "3bbe2e07ec53d8cf9c091667fe10234fcb3e2b45eab2c711002188806f46e779",
+    "lib/forge-std/src/interfaces/IERC165.sol": "9bdab733bba2df028853aef1f5e06871fb4157d15c3c6a670be13f9b614c193b",
+    "lib/forge-std/src/interfaces/IERC20.sol": "283cedb0cf82640370b77b8a42175bc417c69a02d8989ac6d6a99be2157acd4d",
+    "lib/forge-std/src/interfaces/IERC721.sol": "f44e47686226be0889c4a21f782d653c2ebba509c0c13197edf6a5f1567c52a6",
+    "lib/forge-std/src/interfaces/IMulticall3.sol": "6620d9c5ea2e2291440e1dcce5072f948b7ec4d65075876a0d0ac9267d3342e3",
+    "lib/forge-std/src/mocks/MockERC20.sol": "6d200d98f43e9090138c66589f2c65e5e30ffc150b48547ebf6de93bcdc00183",
+    "lib/forge-std/src/mocks/MockERC721.sol": "f66d07f09db8532278c9d4a3c63feafc86a38ea0e0d94b761e9aba3326433e81",
+    "lib/forge-std/src/safeconsole.sol": "ed11aa2efc83fa8e575215a11dd7a9be385cf49dacbc379630168d7334899e46",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/access/Ownable.sol": "38578bd71c0a909840e67202db527cc6b4e6b437e0f39f0c909da32c1e30cb81",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/access/Ownable2Step.sol": "c75345d7b9feef17ae29f2a800ca2f65f8021cf80436a41d6ec00f57f5180f36",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/interfaces/IERC1363.sol": "9c3a75a925a6dac9e88b03cddc58d42fe3131b0aaaad84408521f3f7af2f991b",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/interfaces/IERC165.sol": "dfb3f56fa928a7c6cae41a7ce2c86b9210fa18d33fa26389099d66a0fa790368",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/interfaces/IERC20.sol": "0158e2d3e0e28bedd99eec13dcf1a8aa3a70a5b7e4bb2ad709609c95fcc740d1",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/interfaces/draft-IERC6093.sol": "fa7068f56bc180571a6095be6eaef06d51dbe81e30cb128397d993c9599ecc30",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/token/ERC20/ERC20.sol": "50f34ae16a067a41c2c1091445d11d63788e54c717677cb6d6b0e4cdea2ad21d",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/token/ERC20/IERC20.sol": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/token/ERC20/utils/SafeERC20.sol": "c2394cb2a327f234711da34884947f4aa0f6dd2791d1d6303a0c7acfaf81bca3",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/utils/Context.sol": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/utils/ReentrancyGuard.sol": "94e409e8f6e3184236651a6cc2b1a6a3ea0f0a25eb85b71e524ad5791bb2fbc8",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/utils/StorageSlot.sol": "75704538dcb223239280c6726d9a31cf769a7816718517c997fc7d63bdb70778",
+    "lib/openzeppelin-contracts-v5.6.1/contracts/utils/introspection/IERC165.sol": "9055c2994b37dea1a41b7b7926dcb510f05dbe2540b0aafc5fbee9558fffd0ca",
+    "lib/v4-core/src/interfaces/IExtsload.sol": "9421ef4ba198d94058cd9a4c9fd2d663c61fc682f7dafa449a873456853f0025",
+    "lib/v4-core/src/interfaces/IExttload.sol": "c21643d2c7f48d2d2407438a64a3ff0f376324cf6a0c62608977713652308c9e",
+    "lib/v4-core/src/interfaces/IHooks.sol": "aca1db9898026d9a4b8740752fb0dbfc6a55e4bede6a949c6af4e07d626f6900",
+    "lib/v4-core/src/interfaces/IPoolManager.sol": "173a3f93aeb39373271ebe2bfb961d824922378a39b7a5e983acbb1c122d296e",
+    "lib/v4-core/src/interfaces/IProtocolFees.sol": "807d68adea106ec2aa51a8009155de09ebfe09e1ee7053d5a5ae448d7e840654",
+    "lib/v4-core/src/interfaces/callback/IUnlockCallback.sol": "2e4a514730654da2e08a82eff5b3eabae12dc1c6198951396e1d466d4c0e223e",
+    "lib/v4-core/src/interfaces/external/IERC20Minimal.sol": "5e966a2d22b3b234a56af4b17e36bf7be90f9b29b1ddb6a15bfefc0b6dab4282",
+    "lib/v4-core/src/interfaces/external/IERC6909Claims.sol": "1cd65496c829036bc6aee67bc71363ab5fb6989c65e793087d0e1e2379f7d7d8",
+    "lib/v4-core/src/libraries/BitMath.sol": "e8a45eb3d57f9427fc47bbb2543c1a6a5f394113b378123ac7ca9f113a7502b4",
+    "lib/v4-core/src/libraries/CustomRevert.sol": "9d3dbe6b742cb1ac30f57df89d879ade9649389de1165fc637114bd062d39fca",
+    "lib/v4-core/src/libraries/FixedPoint96.sol": "66ee26d4fb3ac639124bdfa27d3256d196970997fa127c09e9bf7154e30d4590",
+    "lib/v4-core/src/libraries/FullMath.sol": "a9607255a6fd604d9c92f6b7416811c38b9d86e5dfdb0c345a494ebd35f7a4a3",
+    "lib/v4-core/src/libraries/Hooks.sol": "f6012d7f627259f8f32816ee8e10b1d6244067c602a178072732bcaa32086b17",
+    "lib/v4-core/src/libraries/LPFeeLibrary.sol": "e96c3fa7deac991dc09b6c5e560a340d01d6c68ccba483d4b29f8a66e5aa44e0",
+    "lib/v4-core/src/libraries/ParseBytes.sol": "6a6f3d1cec0143fd70ea68c34e6dce3bde72f368b213f1a225ada23dbfd99bb8",
+    "lib/v4-core/src/libraries/SafeCast.sol": "c1a815a41607be5b4c86ca588a951f368156da8ee21bdfc18b5d51b58a0f27be",
+    "lib/v4-core/src/libraries/TickMath.sol": "272d4f6d3ff9ae33596ebcdb84a71a3c2d4542ae8fb5c88ddf1aca8043f5d06b",
+    "lib/v4-core/src/types/BalanceDelta.sol": "320d9c13dec135c3903729e66d3a1040fe86d537a7ee53728915012ca183af32",
+    "lib/v4-core/src/types/BeforeSwapDelta.sol": "6aee06f1553e879f5909e8f4c0eac26ec23dd4821a7e56e4d5077db39a227e12",
+    "lib/v4-core/src/types/Currency.sol": "ba6726fd24fbc66848208dfbb2899116c10729c505e6e5552316ac2444f1dfc3",
+    "lib/v4-core/src/types/PoolId.sol": "548424ac50ad58212545da70207283fb8990731578c115c85d5acbcb0e1d3c9f",
+    "lib/v4-core/src/types/PoolKey.sol": "99e1afe285b5c614ebc9586ab5196db9d24a63fd924a449f5d99f490a6a6d6a9",
+    "script/DeployCtrlArc.s.sol": "57cf725be53c07aa8383fcfd73535a39612cb71d364ce330054eab1f39f1c58a",
+    "src/CtrlFeeVault.sol": "f3d67bf7193481f47340846c7563f37cfd9eb4ecf3c51e4d3c8a83b972761221",
+    "src/CtrlLaunchHookV1.sol": "7e4dcc19dd52aadeef1fa8f7ea5f40160d7bc59a00bb59f8ea8e84e561947e67",
+    "src/CtrlLaunchRouter.sol": "5f036568bfa2303a43954c4cda7aed4f73728341312393c8c47a1e03b363658b",
+    "src/CtrlNativeLaunchHook.sol": "7bf65d9abb80c5a0e17cda6fa799e5f237b70a61d2bd1a045bc3ccb941d09ad4",
+    "src/CtrlNativeV4Factory.sol": "e75c77ffa378c07b89f5dfb5c15044027612527943be42bf696ce589aa97215c",
+    "src/CtrlPositionLocker.sol": "f1c66b3ad3f57412d5bb30708615141b1ba2de52e8af9085b65c8196a5beb480",
+    "src/CtrlReferralRegistry.sol": "4767b049563733447aeaa741c6f37d5ae1ee9c4e3ca8593231c07e5a8ae77f96",
+    "src/CtrlToken.sol": "cdee1739f57d27848775805ad533e80b55cdbad4e36ab4cf250c1bee76167744",
+    "src/interfaces/ICtrlProtocol.sol": "5b3c69cb0ccb94fa209c646af122eaf8a477f0c0d59802154546c21c925ec242",
+    "src/libraries/CtrlLiquidityAmounts.sol": "4fa5ccb03c739742000ff786e724e6a24fc555834785e3696f2d409f5c122338",
+    "test/CtrlArcFork.t.sol": "20ac2fc5ac58552568b1b8dde135c5671d0d43714c7dca21cedf022db48fd08c",
+    "test/CtrlNativeLaunchpad.t.sol": "fe4f086d0d936139be9299b57d81b07184c57930075e00bc1e08ffcd9a62189c",
+    "test/CtrlNativeTestBase.sol": "d864536c6c08516e17d72539c11193c9b44e7bfff874b7f9c20d5e1b1fec1685"
+  },
+  "artifacts": {
+    "vault": {
+      "source": "src/CtrlFeeVault.sol",
+      "contract": "CtrlFeeVault",
+      "creationBytecodeSha256": "bc95c03dd07a2f04f2f4c794fa38e85a1912f2c816c31aa4fdcef488bd4303d5",
+      "immutableValues": {
+        "poolManager": "0x0000000000000000000000008366a39cc670b4001a1121b8f6a443a643e40951",
+        "initializer": "0x000000000000000000000000b84fc033ecf9c16a0c5273c6520600931f2d9cfa"
+      }
+    },
+    "registry": {
+      "source": "src/CtrlReferralRegistry.sol",
+      "contract": "CtrlReferralRegistry",
+      "creationBytecodeSha256": "16e0d2a378bb6c4c947662a29e4559260df66227e34fb0a6115d40ecac1db8d9",
+      "immutableValues": {}
+    },
+    "locker": {
+      "source": "src/CtrlPositionLocker.sol",
+      "contract": "CtrlPositionLocker",
+      "creationBytecodeSha256": "5d6984b9c6eddf9a029027c39d2a99c7c212460f421e894776ef5d544b4cdd8b",
+      "immutableValues": {
+        "positionManager": "0x0000000000000000000000006049c9a0e26405c0985f9e3685c87d0ae917f82b",
+        "initializer": "0x000000000000000000000000b84fc033ecf9c16a0c5273c6520600931f2d9cfa"
+      }
+    },
+    "hookCreate2Deployer": {
+      "source": "script/DeployCtrlArc.s.sol",
+      "contract": "CtrlNativeHookCreate2Deployer",
+      "creationBytecodeSha256": "78f5a3c0a71fd3027105d31b787ab58fb1252274da429bfeb2ae3e5fc303b6fb",
+      "immutableValues": {}
+    },
+    "hook": {
+      "source": "src/CtrlNativeLaunchHook.sol",
+      "contract": "CtrlNativeLaunchHook",
+      "creationBytecodeSha256": "0cb93e73a8e50e19a2a5060e3ec1e476786f1e31d3798b8af8ed9a4008f5447c",
+      "immutableValues": {
+        "GRADUATION_THRESHOLD": "0x00000000000000000000000000000000000000000000021f952f8eeb0b3a0000",
+        "INITIAL_TICK": "0x000000000000000000000000000000000000000000000000000000000001edc0",
+        "TICK_UPPER": "0x000000000000000000000000000000000000000000000000000000000001edc0",
+        "poolManager": "0x0000000000000000000000008366a39cc670b4001a1121b8f6a443a643e40951",
+        "positionManager": "0x0000000000000000000000006049c9a0e26405c0985f9e3685c87d0ae917f82b",
+        "feeVault": "0x000000000000000000000000ada4794e5ac54df44c9608b23c14684458af7367",
+        "referralRegistry": "0x000000000000000000000000f412ed814fe5821910cfede4910f7231c51d9ec5",
+        "initializer": "0x000000000000000000000000b84fc033ecf9c16a0c5273c6520600931f2d9cfa"
+      }
+    },
+    "router": {
+      "source": "src/CtrlLaunchRouter.sol",
+      "contract": "CtrlLaunchRouter",
+      "creationBytecodeSha256": "d6b30dffa29b840bf7db937aa1be778d121656f19995299e9483aad1c8cc51c0",
+      "immutableValues": {
+        "poolManager": "0x0000000000000000000000008366a39cc670b4001a1121b8f6a443a643e40951",
+        "hook": "0x000000000000000000000000e0e48ae841741c1c5a6efa1dee2838e62d5168cc"
+      }
+    },
+    "factory": {
+      "source": "src/CtrlNativeV4Factory.sol",
+      "contract": "CtrlNativeV4Factory",
+      "creationBytecodeSha256": "d22945573f35504c06a8dd998c553efd56d5699569d131d06215cceb1250345b",
+      "immutableValues": {
+        "LAUNCH_FEE": "0x0000000000000000000000000000000000000000000000001090fb1c3fba2000",
+        "INITIAL_TICK": "0x000000000000000000000000000000000000000000000000000000000001edc0",
+        "TICK_UPPER": "0x000000000000000000000000000000000000000000000000000000000001edc0",
+        "poolManager": "0x0000000000000000000000008366a39cc670b4001a1121b8f6a443a643e40951",
+        "positionManager": "0x0000000000000000000000006049c9a0e26405c0985f9e3685c87d0ae917f82b",
+        "permit2": "0x000000000000000000000000000000000022d473030f116ddee9f6b43ac78ba3",
+        "locker": "0x0000000000000000000000001efe83337744f5e84fd51b01bd4e57fd013454d3",
+        "hook": "0x000000000000000000000000e0e48ae841741c1c5a6efa1dee2838e62d5168cc",
+        "launchRouter": "0x000000000000000000000000e5fc122b4563bacbaf429cfa78ae9cb1d1a93686",
+        "feeVault": "0x000000000000000000000000ada4794e5ac54df44c9608b23c14684458af7367"
+      }
+    }
+  }
+}

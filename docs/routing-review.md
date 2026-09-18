@@ -1,98 +1,162 @@
-# Uniswap routing review guide
+# Arc routing and indexing integration
 
-## Submission identity
+Ctrl's Arc deployment uses native USDC and a direct immutable Uniswap v4 hook.
+This guide is intended for routing providers, indexers, and hook reviewers.
+For product context, see [Ctrl documentation](https://docs.ctrl.finance/),
+[Protocol & contracts](https://docs.ctrl.finance/protocol), and
+[Rewards](https://docs.ctrl.finance/rewards).
 
-| Field | Value |
-| --- | --- |
-| Hook name | Ctrl Immutable Launch Hook |
-| Hook address | `0x5aE59a607FBE48e62270272Ee0eC266a544368cc` |
-| Chain | Robinhood Chain mainnet, 4663 |
-| Source entry point | [`src/CtrlLaunchHookV1.sol`](../src/CtrlLaunchHookV1.sol) |
-| Website | https://ctrl.finance |
-| Permission mask | `0x28cc` |
-| Dynamic fees | No |
-| Independent audit for this deployment | None |
+## Deployment identity
 
-## Hook behavior
+| Field | Arc mainnet | Robinhood mainnet |
+| --- | --- | --- |
+| Chain ID | `5042` | `4663` |
+| Native currency | USDC, 18 decimals | ETH, 18 decimals |
+| Hook | `0xE0e48AE841741c1C5A6eFa1DEe2838E62d5168CC` | `0x5aE59a607FBE48e62270272Ee0eC266a544368cc` |
+| Factory | `0x936eED62da1a4e7A7fb1fABFe2e10C4bCbD7B322` | `0xf10677910B82bBC6861ED78d7706174924DD767d` |
+| Factory start block | `21178639` | `63851940` |
+| Source | [CtrlNativeLaunchHook](../src/CtrlNativeLaunchHook.sol) | [CtrlLaunchHookV1](../src/CtrlLaunchHookV1.sol) |
+| Manifest | [5042-mainnet.json](../deployments/5042-mainnet.json) | [4663-mainnet.json](../deployments/4663-mainnet.json) |
+| Hook permission mask | `0x28cc` | `0x28cc` |
 
-Enabled callbacks are `beforeInitialize`, `beforeAddLiquidity`, `beforeSwap`,
-and `afterSwap`, with both swap-return-delta flags. Because it uses return
-deltas, this hook requires manual review under the
-[submission form's criteria](https://developers.uniswap.org/hook-allowlist).
+Both hooks implement `IHooks` directly. Neither uses a proxy, hook extensions,
+subhooks, or hooklets. Both enable `beforeInitialize`, `beforeAddLiquidity`,
+`beforeSwap`, `afterSwap`, `beforeSwapReturnDelta`, and `afterSwapReturnDelta`.
+The return deltas are material to quoting and settlement; reviewing only the
+core LP fee omits the Ctrl hook fee.
 
-The fixed 1% hook fee is denominated in native ETH. Its allocations are 80% to
-the creator, 5% to an eligible registered referrer, 2.5% to the graduation bounty
-before graduation, and the remainder to the protocol treasury. Rounding and
-ineligible referral amounts fall into the remainder. After graduation the
-bounty allocation also falls into the protocol remainder.
+## Native-USDC units and canonical pools
 
-The hook mints native-ETH ERC-6909 claims to `CtrlFeeVault` in the PoolManager.
-The vault records recipient-specific liabilities and supports pull claims.
-Graduation at 4.2 ETH net principal releases accumulated bounty claims without
-migrating liquidity. If optional hook data omits a beneficiary, the bounty is
-assigned to the vault treasury.
+Arc canonical pool keys contain:
 
-Empty hook data is accepted in all four modes: exact-input and exact-output,
-buy and sell. The optional context is `abi.encode(beneficiary, referrer)`.
-Wrong-length data or noncanonical address words are treated as absent context.
-The native-specified modes enforce full fill. Relevant tests cover all four
-modes, fee rounding, protocol fee accrual, and optional attribution.
+```text
+currency0  = 0x0000000000000000000000000000000000000000  // native USDC, 18 decimals
+currency1  = launched token address                    // CtrlToken, 18 decimals
+fee        = 0                                        // core LP fee
+tickSpacing = 200
+hooks      = 0xE0e48AE841741c1C5A6eFa1DEe2838E62d5168CC
+```
 
-Pools are restricted to registered Ctrl tokens paired with native ETH, zero
-core LP fee and tick spacing 200. Initialization occurs through the factory.
-Only the initial PositionManager seed addition is accepted; subsequent liquidity
-additions revert. The locker has no withdrawal function for the initial position.
-These liquidity restrictions must be disclosed in the routing review.
+One native USDC is `10^18` base units in transaction value, pool deltas, and vault
+accounting. The USDC ERC-20 interface at
+`0x3600000000000000000000000000000000000000` exposes six decimals. It is not a
+second balance and must not replace `currency0` in the canonical pool key.
+A pool containing that ERC-20 address is a different pool.
+
+Some shared ABI names retain an `Eth` suffix (`netEthPrincipal`,
+`creatorClaimableEth`, `initialBuyEth`). On Arc these represent **native USDC
+with 18 decimals**. Interpret their units using the chain, not the field name.
+
+For ARAIDERS (`0x318e2D646b698ed632694113fd870a0e98ab6054`), the canonical PoolId is
+`0xabb4fad3bfadb04fa90c917b327180d20141f57520c8fb26b48e6138ceaf9220`.
+Other pools can use the same token with different currencies, fees, or hooks.
+Resolve Ctrl's pool using factory/hook records before quoting or attaching
+launchpad attribution.
+
+## Fees, quotes, and settlement
+
+The Ctrl fee is fixed at **1%**, denominated in the native currency. It allocates
+80% of the fee to the creator, 5% to an eligible registered referrer, 2.5% to the
+bounty before graduation, and the remainder to the protocol. Ineligible referral
+shares, rounding remainders, and the post-graduation bounty share go to the
+protocol. Dynamic LP fees are disabled. Core LP fee is zero; any independently
+configured Uniswap protocol fee must still be included by the quoting path.
+
+Use a hook-aware v4 quote/simulation. All four swap modes accept empty hook data:
+exact-input buy, exact-output buy, exact-input sell, and exact-output sell.
+Optional attribution is `abi.encode(beneficiary, referrer)`. Wrong-length data
+or noncanonical address words are treated as absent context. Referral eligibility
+comes from the registry and the hook's checks; a supplied address alone is not
+an entitlement. Native-specified modes enforce full fill.
+
+`CtrlLaunchRouter` exposes exact-input buy/sell methods. A compatible v4 router
+can invoke other modes through PoolManager. Router compatibility and discovery
+by a particular aggregator require that provider's review; this publication
+makes no allowlisting claim.
+
+Fee backing remains in PoolManager as native-currency ERC-6909 claims belonging
+to the vault. Claim functions burn those claims and pay the credited recipient.
+
+## Liquidity and graduation
+
+Initialization is restricted to registered Ctrl launches through the factory.
+Only the initial PositionManager seed addition is accepted; later liquidity
+additions revert. The seed position NFT is permanently held by the locker,
+which has no withdrawal function.
+
+On Arc, graduation occurs when net native principal crosses **10,027.332 USDC**.
+Buys increase principal; sells reduce it, floored at zero. This is not a
+cumulative-volume or market-cap threshold. The hook marks graduation and
+releases the accrued bounty; it does not migrate liquidity, change the pool key,
+or replace Uniswap's pricing function. The Robinhood threshold is **4.2 ETH**.
+
+## Indexing and token metadata
+
+- Start Arc factory discovery at block **21,178,639**, filtering `TokenLaunched`
+  by the factory address above. The event contains token, creator, PoolId,
+  position ID, payout, and optional initial-purchase details.
+- Confirm `launchFactory()` and `poolId()` on the token, and `poolIdForToken()` /
+  `poolKey()` on the hook. Track the complete PoolId, not token symbol alone.
+- Use the factory's `getLaunch()` and hook's `getLaunch()` for registered launch
+  state. Index `CreatorPayoutUpdated` when maintaining future reward attribution.
+- Read `name`, `symbol`, `decimals`, `totalSupply`, `metadataURI`, `logoURI`,
+  `description`, `website`, `x`, `telegram`, `discord`, and `farcaster` from
+  [CtrlToken](../src/CtrlToken.sol). Resolve metadata URIs as needed.
+- Index PoolManager `Swap` events for the canonical PoolIds, together with the
+  hook's `FeeAccrued`, `PrincipalUpdated`, and `TokenGraduated` events. Account
+  for hook fees when distinguishing pool amounts from trader settlement.
+- Namespace all data by chain ID and address/PoolId. Identical addresses on two
+  chains can refer to different contract roles.
+
+Contract ABIs are in [`abi/`](../abi). The runtime application APIs are separate
+from these contracts; integration should agree on any offchain metadata feed
+rather than assume an undocumented endpoint schema.
 
 ## Immutability and authority
 
-The hook's executable code is fixed and executes directly. No upgrade authority
-exists. Ordinary balances and protocol state continue to change.
+The hook's executable code and constructor configuration are fixed. Ordinary
+balances, launch records, fee accounting, and graduation state change normally.
 
 | Component | Authority or mutable state |
 | --- | --- |
-| Hook | Five immutable constructor dependencies; one-time factory binding already completed. Launch state, fee accounting, principal and graduation state change through the protocol. |
-| Factory | Safe owner can pause or open future launches and use inherited two-step ownership transfer. Creators can update their own future payout address. Dependency addresses and launch parameters are fixed. |
-| Fee vault | Safe owner can change the treasury for future allocations and use inherited two-step ownership transfer. This does not redirect already credited balances. Hook binding is one-time and complete. |
-| Referral registry | A referrer can set or update their own payout address for future attribution. |
+| Hook | Immutable dependencies, graduation threshold and initial tick. One-time factory binding complete; no hook administrator or upgrade authority. |
+| Factory | Owner can pause/unpause future launches and transfer ownership. Creators can update their own future payout address. Dependencies, launch fee and initial tick are fixed. |
+| Fee vault | Owner can update the treasury and transfer ownership. Already credited recipient balances cannot be reassigned. Hook binding is one-time and complete. |
+| Referral registry | Referrers can set or update their own payout address for future attribution. |
 | Router | Immutable hook and PoolManager; no administrator. |
 | Position locker | Immutable PositionManager; one-time factory binding complete; no position withdrawal path. |
-| Token | Fixed supply, ownerless token; canonical PoolId can be set once by its factory. |
+| Token | Fixed supply and no token owner; canonical PoolId can be set once by its factory. |
 | CREATE2 deployer | Public deployment helper; no control over the deployed hook. |
 
-Factory and vault owner at deployment:
+Factory owner, vault owner, and treasury recorded at deployment on both chains:
 `0x99Ffd2FdcaF29AFDDbbd49655F9331FF3AC1aA09` (Safe).
 
-## Evidence map
+**Unreleased bounty reserves differ from credited rewards.** When the graduating
+swap supplies no beneficiary, the hook assigns the accumulated reserve to the
+vault's treasury at graduation. A treasury rotation before that event changes
+this fallback recipient, including for reserves accrued earlier. Once released,
+only the credited recipient can claim. This behavior matters when reviewing the
+[V12 documentation](https://docs.ctrl.finance/security-audit), whose named hook
+scope is the earlier V2 deployment.
 
-- [Deployment manifest](../deployments/4663-mainnet.json): addresses, constructor
-  arguments, CREATE2 salt, receipts, code hashes, wiring and historical verification.
-- [Live verification report](../verification/live-verification.json): runtime and
-  paused-state observations at a recorded block, generated from this repository.
-- [Build verification](verification.md): source hashes, exact metadata and bytecode reproduction.
-- [`CtrlImmutableRouting.t.sol`](../test/CtrlImmutableRouting.t.sol): four swap
-  modes with empty data, hook fee deltas and core protocol-fee regressions.
-- [`CtrlImmutableRouterFork.t.sol`](../test/CtrlImmutableRouterFork.t.sol): the
-  deployed Universal Router on a Robinhood fork.
-- [`CtrlLaunchpad.t.sol`](../test/CtrlLaunchpad.t.sol),
-  [`CtrlInvariant.t.sol`](../test/CtrlInvariant.t.sol),
-  [`CtrlFactoryPoolBinding.t.sol`](../test/CtrlFactoryPoolBinding.t.sol): protocol
-  accounting, solvency and pool-binding checks.
-- [`DeployCtrlImmutable.t.sol`](../test/DeployCtrlImmutable.t.sol): deployment
-  wiring, paused launch state and absence of upgrade entry points.
+## Evidence and review scope
 
-## Submission status
+- [Arc manifest](../deployments/5042-mainnet.json): constructor arguments,
+  deployment transactions, code hashes, wiring, and Sourcify links.
+- [Arc compiler inputs and provenance](../verification/5042-mainnet): deployed
+  source bytes and reproducible build fingerprints.
+- [Arc live report](../verification/5042-mainnet/live-verification.json): exact
+  runtime and launch-state observations at its recorded block.
+- [Verification guide](verification.md): reproducible checks on either chain.
+- [Native launchpad tests](../test/CtrlNativeLaunchpad.t.sol): fee accounting,
+  economics validation, graduation, claims, and absence of upgrade entry points.
+- [Arc fork tests](../test/CtrlArcFork.t.sol): production PoolManager and
+  PositionManager, locked positions, four swap modes, graduation, and claims.
+  The helper router in this suite is a test router, not the deployed Universal Router.
+- [Robinhood routing tests](../test/CtrlImmutableRouting.t.sol) and
+  [Universal Router fork tests](../test/CtrlImmutableRouterFork.t.sol).
 
-The source publication does not submit or complete the allowlist application.
-At publication the new factory is paused and no funded demonstration pool is
-recorded. Existing tokens continue using their original hook and pools.
-
-Uniswap's [form](https://developers.uniswap.org/hook-allowlist) requires a pool
-using this exact hook with nonzero liquidity, submitter contact details, and
-matching source verification on the chain's explorer. Sourcify reports an exact
-creation and runtime match; native Blockscout Code-tab import remains unconfirmed.
-The applicant should confirm that explorer evidence before submitting. The form
-also requires the submitter to accept Uniswap's terms.
-
-No independent audit covers this immutable deployment. Tests, verification and
-publication do not imply audit coverage or Uniswap routing approval.
+The manifests contain historical paused-state observations. Rerun the read-only
+verifier for current status. Source verification, local tests, and fork tests
+are distinct from independent auditing and routing-provider approval. No
+independent audit of the exact immutable Arc deployment is recorded here.
